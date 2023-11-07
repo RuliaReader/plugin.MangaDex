@@ -1,0 +1,9 @@
+{
+  "name": "@rulia/MangaDex",
+  "title": "MangaDex",
+  "description": "MangaDex Plugin.",
+  "version": "0.0.1",
+  "author": "LittleStar_OuO",
+  "tags": ["MangaDex", "Manga","Comic"],
+  "homepage": "https://github.com/LittleStar-OuO/plugin.MangaDex"
+}
