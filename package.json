@@ -1,9 +1,15 @@
 {
-  "name": "@rulia/MangaDex",
-  "title": "MangaDex",
-  "description": "MangaDex Plugin.",
-  "version": "0.0.1",
-  "author": "LittleStar_OuO",
-  "tags": ["MangaDex", "Manga","Comic"],
-  "homepage": "https://github.com/LittleStar-OuO/plugin.MangaDex"
+	"name": "@rulia/MangaDex",
+	"title": "MangaDex",
+	"description": "MangaDex Plugin.",
+	"version": "0.0.2",
+	"author": "LittleStar_OuO",
+	"tags": ["MangaDex", "Manga", "Comic"],
+	"homepage": "https://github.com/LittleStar-OuO/plugin.MangaDex",
+	"userConfig": {
+		"Language": {
+			"displayName": "Language",
+			"description": "Please add the abbreviation for a commonly used 'language' in the Rulia plugin config, for example: en、zh or pl."
+		}
+	}
 }

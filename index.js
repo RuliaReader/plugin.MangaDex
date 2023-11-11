@@ -1,13 +1,21 @@
 async function getMangaListByLatest(page, pageSize) {
 	const comicsIdUrl = 'https://api.mangadex.org/chapter';
 	const url = 'https://api.mangadex.org/manga';
+	const userConfig = window.Rulia.getUserConfig();
+	let language = userConfig.Language;
+	if (!language) {
+		language = '';
+	} else {
+		language = '&translatedLanguage[]=' + language
+	}
 	try {
 		const comicsIdRawResponse = await window.Rulia.httpRequest({
 			url: comicsIdUrl,
 			method: 'GET',
 			payload: 'limit=' + pageSize +
 				'&offset=' + ((page - 1) * pageSize) +
-				'&includes[]=user&includes[]=scanlation_group&includes[]=manga&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&order[readableAt]=desc'
+				'&includes[]=user&includes[]=scanlation_group&includes[]=manga&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&order[readableAt]=desc' +
+				language
 		});
 		const comicsIdResponse = JSON.parse(comicsIdRawResponse);
 		var comicsIdList = [];
@@ -127,11 +135,20 @@ async function getMangaData(dataPageUrl) {
 	const seasonIdMatch = dataPageUrl.match(seasonIdMatchExp);
 	const detailUrl = 'https://api.mangadex.org/manga/' + seasonIdMatch[1];
 	const chapterListUrl = 'https://api.mangadex.org/manga/' + seasonIdMatch[1] + '/feed';
+	const comicsIdUrl = 'https://api.mangadex.org/manga';
+	const url = 'https://api.mangadex.org/manga';
+	const userConfig = window.Rulia.getUserConfig();
+	let language = userConfig.Language;
+	if (!language) {
+		language = '';
+	} else {
+		language = '&translatedLanguage[]=' + language
+	}
 	try {
 		const detailRawResponse = await window.Rulia.httpRequest({
 			url: detailUrl,
 			method: 'GET',
-			payload: 'includes[]=artist&includes[]=author&includes[]=cover_art'
+			payload: 'includes[]=artist&includes[]=author&includes[]=cover_art' + language
 		})
 		const detailResponse = JSON.parse(detailRawResponse);
 		let comicTitle = '';
@@ -157,12 +174,20 @@ async function getMangaData(dataPageUrl) {
 		const chapterListRawResponse = await window.Rulia.httpRequest({
 			url: chapterListUrl,
 			method: 'GET',
-			payload: 'limit=500&includes[]=scanlation_group&includes[]=user&order[volume]=desc&order[chapter]=desc&offset=0&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&contentRating[]=pornographic'
+			payload: 'limit=500&includes[]=scanlation_group&includes[]=user&order[volume]=desc&order[chapter]=desc&offset=0&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&contentRating[]=pornographic' +
+				language
 		});
 		const chapterListResponse = JSON.parse(chapterListRawResponse);
 		for (var manga of chapterListResponse.data) {
+			let translatedLanguage = manga.attributes.translatedLanguage.charAt(0).toUpperCase() + manga.attributes
+				.translatedLanguage.slice(1);
+			let title = manga.attributes.title ? '[' + manga.attributes.title + ']' : '';
+			let chapter = manga.attributes.chapter.length === 1 ? '0' + manga.attributes.chapter : manga.attributes
+				.chapter;
+			let updatedAt = new Date(manga.attributes.updatedAt).toISOString().split('T')[0].replace(/-/g, '/');
 			var comic = {
-				title: manga.attributes.translatedLanguage + '.' + manga.attributes.chapter,
+				title: '[' + translatedLanguage + '][' + chapter + ']' + title + '[' +
+					updatedAt + ']',
 				url: 'https://mangadex.org/chapter/' + manga.id
 			}
 			result.chapterList.push(comic);
