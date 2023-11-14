@@ -1,15 +1,27 @@
 {
-	"name": "@rulia/MangaDex",
-	"title": "MangaDex",
-	"description": "MangaDex Plugin.",
-	"version": "0.0.2",
-	"author": "LittleStar_OuO",
-	"tags": ["MangaDex", "Manga", "Comic"],
-	"homepage": "https://github.com/LittleStar-OuO/plugin.MangaDex",
-	"userConfig": {
-		"Language": {
-			"displayName": "Language",
-			"description": "Please add the abbreviation for a commonly used 'language' in the Rulia plugin config, for example: en、zh or pl."
-		}
-	}
+  "name": "@rulia/MangaDex",
+  "version": "0.0.3",
+  "description": "MangaDex Plugin.",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "author": {
+    "name": "LittleStar_OuO",
+    "email": "littlestar_ouo@foxmail.com"
+  },
+  "devDependencies": {
+    "@lancercomet/eslint-config-eslint-rules": "^0.1.0",
+    "@rulia/types": "^0.1.1",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "archiver": "^6.0.1",
+    "eslint": "^8.48.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-config-standard-with-typescript": "^39.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.0.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^5.2.2"
+  }
 }

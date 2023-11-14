@@ -1,0 +1,15 @@
+{
+  "name": "@rulia/bilibili-manga",
+  "title": "MangaDex",
+  "description": "MangaDex Plugin.",
+  "version": "<VERSION>",
+  "author": "LittleStar_OuO",
+  "tags": ["MangaDex", "Manga", "Comic"],
+  "homepage": "https://github.com/LittleStar-OuO/plugin.MangaDex",
+  "userConfig": {
+    "Language": {
+      "displayName": "Language",
+      "description": "Please add the abbreviation for a commonly used 'language' in the Rulia plugin config, for example: en、zh or pl."
+    }
+  }
+}
