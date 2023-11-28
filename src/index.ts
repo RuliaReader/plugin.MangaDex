@@ -198,6 +198,7 @@ async function getMangaData(dataPageUrl: any) {
       // @ts-ignore TS(2345) FIXME: Argument of type 'string' is not assignable to par... Remove this comment to see the full error message
       result.chapterList.push(comic);
     }
+    result.chapterList.reverse();
     window.Rulia.endWithResult(result);
   } catch (error: any) {
     window.Rulia.endWithException(error.message);

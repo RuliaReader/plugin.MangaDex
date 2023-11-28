@@ -1,6 +1,6 @@
 {
   "name": "@rulia/MangaDex",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "MangaDex Plugin.",
   "private": true,
   "scripts": {
